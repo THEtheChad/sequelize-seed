@@ -28,9 +28,11 @@ class Model {
       let record = {};
       fields.forEach(field => {
         let def = defs[field];
+        let seed = def.seed || def.type;
 
-        let [m, predicate, params] = /([^(]+)\(([^)]+)\)/.exec(def.seed);
-        params = params.split(',');
+        let [, predicate, , params] = /([^(]+)(\(([^)]+)\))?/.exec(seed);
+
+        if (params) params = params.split(',');
 
         record[field] = specious.create(predicate, params);
       });
