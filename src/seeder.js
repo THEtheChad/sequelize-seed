@@ -15,23 +15,23 @@ class Seeder {
     }
   }
 
-  _import(path) {
-    let definition = require(path);
+  _import(path_str) {
+    let definition = require(path_str);
     let model = definition(Model, {});
     this.models[model.name] = model;
   }
 
-  import(path) {
-    let isDirectory = fs.lstatSync(path).isDirectory();
+  import(path_str) {
+    let isDirectory = fs.lstatSync(path_str).isDirectory();
 
-    if (!isDirectory) return this._import(path);
+    if (!isDirectory) return this._import(path_str);
 
     fs
-      .readdirSync(path)
+      .readdirSync(path_str)
       .filter(function (file) {
         return (file.indexOf('.') !== 0) && (file !== 'index.js') && (file.slice(-3) === '.js');
       })
-      .forEach(file => this._import(path.resolve(path, file)));
+      .forEach(file => this._import(path.resolve(path_str, file)));
   }
 }
 
