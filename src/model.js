@@ -1,4 +1,4 @@
-const generator = require('data-generator');
+const specious = require('specious');
 
 class Model {
   constructor(name, attrs, opts) {
@@ -32,7 +32,7 @@ class Model {
         let [m, predicate, params] = /([^(]+)\(([^)]+)\)/.exec(def.seed);
         params = params.split(',');
 
-        record[field] = generator.create(predicate, params);
+        record[field] = specious.create(predicate, params);
       });
       records.push(record);
     }

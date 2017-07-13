@@ -9,6 +9,7 @@
   "author": "Chad Elliott <chad@exceleratedigital.com>",
   "license": "MIT",
   "dependencies": {
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "specious": "0.0.1"
   }
 }
